@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES6", // JS V
+        "watch": true, // compile every save
+        "lib": [
+            "dom",
+            "es2017"
+        ]
+    }
+}
