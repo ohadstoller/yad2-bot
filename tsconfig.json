@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "ES6", // JS V
-        "watch": true, // compile every save
+        "target": "ESNext",
+        "watch": true,
         "lib": [
             "dom",
             "es2017"
