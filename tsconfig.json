@@ -1,10 +1,18 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "watch": true,
-        "lib": [
-            "dom",
-            "es2017"
-        ]
-    }
+  "compilerOptions": {
+    "target": "ESNext",
+    "watch": false,
+    "lib": ["dom", "es6", "DOM.Iterable", "ScriptHost"]
+  },
+  "exclude": ["node_modules"],
+  // "include": [],
+  "declaration": true,
+  "sourceMap": true,
+  "rootDir": "./src",
+  "outDir": "./dist",
+  "removeComments": true,
+  "strict": true
+  // "experimentalDecorators": true
 }
+
+// for manual watch mode have "watch": true, and run --> tsc
