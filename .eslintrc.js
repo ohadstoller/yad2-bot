@@ -1,4 +1,4 @@
-// module.exports = {
-//     "extends": "airbnb-base",
-//     "excludedFiles": "dist"
-// };
+export default {
+    "extends": "airbnb-base"
+
+};
