@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "outDir": "./dist",
+    "target": "es5",
     "watch": false,
     "lib": ["dom", "es6", "DOM.Iterable", "ScriptHost"]
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist"],
   // "include": [],
   "declaration": true,
   "sourceMap": true,
   "rootDir": "./src",
-  "outDir": "./dist",
   "removeComments": true,
   "strict": true
-  // "experimentalDecorators": true
 }
-
-// for manual watch mode have "watch": true, and run --> tsc
