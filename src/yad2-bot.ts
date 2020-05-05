@@ -1,13 +1,19 @@
-const yad2 = require("./bot-module");
+
+import { Yad2Bot } from './bot-module'
+const yad2 = new Yad2Bot(this.browser);
+
+
 
 const runYad2Bot = async (): Promise<void> => {
   try {
-    let mainPage;
-    mainPage = await yad2.browseBot(
+    let mainPage: any = await yad2.browseBot(
       "https://www.yad2.co.il/realestate/forsale"
     );
-    const title: string = await mainPage.getReaEstateTitle();
-    console.log(title);
+    const realEstateTitle: string = await mainPage.getReaEstateTitle();
+
+    console.log(realEstateTitle)
+
+    await yad2.closeBot()
 
   } catch (e) {
     console.log(e);
@@ -16,4 +22,6 @@ const runYad2Bot = async (): Promise<void> => {
 };
 
 runYad2Bot();
+
+
 

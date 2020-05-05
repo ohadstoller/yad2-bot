@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,13 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var puppeteer = require("puppeteer");
 var Yad2Bot = /** @class */ (function () {
-    function Yad2Bot(browser, puppeteerPage) {
+    function Yad2Bot(browser) {
         this.browser = browser;
-        this.puppeteerPage = puppeteerPage;
         this.browser = browser;
-        this.puppeteerPage = puppeteerPage;
     }
     Yad2Bot.prototype.browseBot = function (domain) {
         return __awaiter(this, void 0, void 0, function () {
@@ -49,7 +49,7 @@ var Yad2Bot = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, puppeteer.launch({ headless: false, devtools: false })];
+                        return [4 /*yield*/, puppeteer.launch({ headless: true, devtools: false })];
                     case 1:
                         _a.browser = _b.sent();
                         return [4 /*yield*/, this.browser.newPage()];
@@ -58,10 +58,24 @@ var Yad2Bot = /** @class */ (function () {
                         return [4 /*yield*/, page.setViewport({ width: 1920, height: 1080 })];
                     case 3:
                         _b.sent();
-                        return [4 /*yield*/, page.goto(domain, { timeout: 100 * 60 * 2 })];
+                        return [4 /*yield*/, page.goto(domain, { timeout: 100 * 60 * 12 })];
                     case 4:
                         _b.sent();
                         return [2 /*return*/, this.browseMainPage(page)];
+                }
+            });
+        });
+    };
+    Yad2Bot.prototype.closeBot = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log('Closing bot.. Bye Bye..');
+                        return [4 /*yield*/, this.browser.close()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
@@ -72,7 +86,7 @@ var Yad2Bot = /** @class */ (function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, {
                         getReaEstateTitle: function () { return __awaiter(_this, void 0, void 0, function () {
-                            var realEstateHeaderText, _a, _b, _c;
+                            var title, _a, _b, _c, titleSplit, titleRev, titleJoin;
                             return __generator(this, function (_d) {
                                 switch (_d.label) {
                                     case 0: return [4 /*yield*/, puppeteerPage.waitForSelector('div[class="feed_header"] h1')];
@@ -83,9 +97,17 @@ var Yad2Bot = /** @class */ (function () {
                                         return [4 /*yield*/, puppeteerPage.$('div[class=feed_header] h1')];
                                     case 2: return [4 /*yield*/, _b.apply(_a, _c.concat([_d.sent()]))];
                                     case 3:
-                                        realEstateHeaderText = _d.sent();
-                                        return [2 /*return*/, realEstateHeaderText];
+                                        title = _d.sent();
+                                        titleSplit = title.split("");
+                                        titleRev = titleSplit.reverse();
+                                        titleJoin = titleRev.join("");
+                                        return [2 /*return*/, titleJoin];
                                 }
+                            });
+                        }); },
+                        reverseString: function (string) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                return [2 /*return*/, string.split('').reverse().join('')];
                             });
                         }); }
                     }];
@@ -94,4 +116,4 @@ var Yad2Bot = /** @class */ (function () {
     };
     return Yad2Bot;
 }());
-module.exports = new Yad2Bot(this.browser, this.puppeteerPage);
+exports.Yad2Bot = Yad2Bot;
